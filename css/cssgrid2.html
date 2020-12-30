@@ -20,6 +20,29 @@
             border: solid 5px dodgerblue;
             background: #fff;
         }
+
+        body {
+            display: grid;
+            grid-template-columns: 
+            [inicio]1fr 
+            [meio1 metade1] 1fr 
+            [meio2 metade2]1fr
+            [fim];
+            grid-template-rows: repeat(3, 1fr);
+            column-gap: 20px;
+            row-gap: 20px;
+        }
+
+        .d1 {
+            grid-column-start: metade2;
+            grid-column-end: fim;
+            grid-column: meio1 / fim; /* shortcut de start e end */
+            grid-row: 1 / span 2;
+            /* row-start /column-start /row-end /column-end */
+            grid-area: 1 / meio1 / span 3 / fim;
+
+           
+        }
     </style>
 </head>
 

@@ -7,15 +7,135 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+        * {
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 1200px;
+            width: 1280px;
+            font-family: 'Oswald', sans-serif;
+        }
+        .bg {
+            background-image: url(background.jpg);
+        }
+        .cabecalho {
+            background-color: transparent;
+            display:inline-block;
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            height: 65px;
+            width: 1350px;
+            box-sizing: content-box;
+            
+        }
+
+        .logo {
+            display: inline-block;
+            position: absolute;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .imagem {
+            display: inline-block;
+            position: absolute;
+            margin: 5px;
+            height: 50px;
+            width: 220px;
+           
+        }
+
+        .menu {
+            display: inline-block;
+            position: absolute;
+
+
+        }
+         li {
+            color: white;
+            font-size: 23px;
+            text-decoration: none; 
+            display: inline-block;
+            position: relative;
+            left: 250px;
+            bottom: 1px;
+
+        }
+
+        .menu1 {
+            background-color: black;
+            padding: 5px;
+            color: white;
+            margin: 5px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .menu1:hover {
+            color: black;
+            background-color: white;
+        }
+        
+        .menu-toggle {
+            float: right;
+            position: absolute;
+            right: 200px;
+            top:10px;
+        }
+
+
+        .autenticacao {
+            font-size: 23px;
+            display: inline-block;
+            position: absolute;
+            right: 5px;
+            bottom: 16px;
+        }
+
+        .login {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            background-color: black;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        .botao {
+            font-size: 20px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            
+        }
+
+        .destaque {
+            color: white;
+            background-color: rgb(5, 223, 5);
+           
+        }
+
+        
+        
+        @media (min-width: 679px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        
     </style>
 </head>
 
-<body>
+<body class="bg">
     <header class="cabecalho">
         <div class="logo">
             <a href="#inicio">
-                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+                <img class="imagem" src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
             </a>
         </div>
         <button class="menu-toggle">
@@ -24,27 +144,37 @@
         <nav class="menu">
             <ul>
                 <li>
-                    <a href="#inicio">Início</a>
+                    <a class="menu1" href="#inicio">Início</a>
                 </li>
                 <li>
-                    <a href="#cursos">Cursos</a>
+                    <a class="menu1" href="#cursos">Cursos</a>
                 </li>
                 <li>
-                    <a href="#sobre">Sobre</a>
+                    <a class="menu1" href="#sobre">Sobre</a>
                 </li>
                 <li>
-                    <a href="#contato">Contato</a>
+                    <a class="menu1" href="#contato">Contato</a>
                 </li>
             </ul>
         </nav>
         <aside class="autenticacao">
-            <a href="#login">Login</a>
+            <a class="login" href="#login">Login</a>
             <a href="#registar" class="botao destaque">Registrar</a>
         </aside>
     </header>
 
     <script>
-        // ...
+       window.onhashchange = function (e) {
+           const oldURL = e.oldURL.split ('#')[1]
+           const newURL = e.newURL.split('#')[1]
+
+           console.log(oldURL, newURL);
+
+           const oldMenu = document.querySelector(`.menu a[href='#${oldURL}']`)
+           const newMenu = document.querySelector(`.menu a[href='#${newURL}']`)
+           oldMenu && oldMenu.classList.remove('selected')
+           newMenu && newMenu.classList.add('selected')
+       }
     </script>
 </body>
 
